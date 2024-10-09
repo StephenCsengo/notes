@@ -6,12 +6,21 @@ import Container from "@mui/material/Container";
 import Search from "./Search.jsx";
 import Filters from "./Filters.jsx";
 import AddNote from "./AddNote.jsx";
+import { Grid2 } from "@mui/material";
 const App = () => {
   return (
     <Container maxWidth="xl">
-      <Search />
-      <Filters />
-      <AddNote />
+      <Grid2 container spacing={2}>
+        <Grid2 size={12}>
+          <Search />
+        </Grid2>
+        <Grid2 display="flex" justifyContent="left" size={8}>
+          <Filters />
+        </Grid2>
+        <Grid2 display="flex" justifyContent="right" size={4}>
+          <AddNote />
+        </Grid2>
+      </Grid2>
     </Container>
   );
 };
