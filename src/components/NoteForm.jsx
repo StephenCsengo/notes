@@ -44,7 +44,8 @@ const NoteForm = () => {
                     </MenuItem>
                 ))}
             </TextField>
-            <Button>Submit Note</Button>
+            <Button>Add</Button>
+            <Button>Cancel</Button>
         </form>
     )
 }

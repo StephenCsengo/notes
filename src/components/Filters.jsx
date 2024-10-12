@@ -1,14 +1,14 @@
 import React from "react";
-import { Button, ButtonGroup } from "@mui/material";
+import { Stack, Chip } from "@mui/material";
 
 const Filters = () => {
   return (
-    <ButtonGroup variant="text" aria-label="Note types">
-      <Button>All</Button>
-      <Button>Home</Button>
-      <Button>Work</Button>
-      <Button>Personal</Button>
-    </ButtonGroup>
+    <Stack direction="row" spacing={1}>
+      <Chip label="All" color="default" variant="" />
+      <Chip label="Home" color="secondary" variant="outlined" />
+      <Chip label="Work" color="success" variant="outlined" />
+      <Chip label="Personal" color="info" variant="outlined" />
+    </Stack>
   );
 };
 

@@ -1,13 +1,79 @@
-import React from "react";
-import { Button } from "@mui/material";
+import React, { useState, Fragment } from "react";
+import { Button, TextField, MenuItem, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 
 const AddNote = () => {
+  const [open, setOpen] = useState(false);    
+  const [title, setTitle] = useState("");
+  const [desc, setDesc] = useState("");
+  const [type, setType] = useState("Personal");
+  const types = [
+      {
+          key: 1, 
+          value: "Personal"
+      }, 
+      {
+              key: 2, 
+              value:"Home"
+      },
+      {
+              key: 3, 
+              value: "Work"
+      }
+  ];
+
+
+  const handleOpen = () => {
+    setOpen(true);
+  }
+
+  const handleClose = () => {
+    setOpen(false);
+  }
   return (
-    <Button variant="contained">
-      <AddIcon />
-      Add Note
-    </Button>
+    <Fragment>
+      <Button variant="contained" onClick={handleOpen}>
+        <AddIcon />
+        Add Note
+      </Button>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        PaperProps={{
+          component: 'form',
+          onSubmit: (e) => {
+            e.preventDefault();
+            console.log(title, desc, type);
+            handleClose;
+          },
+        }}
+      >
+        <DialogTitle>Add Note</DialogTitle>
+        <DialogContent>
+        <TextField id="title" value={title} onChange={(e) => setTitle(e.target.value)} label="Title" required></TextField>
+            <TextField id="desc" value={desc} onChange={(e) => setDesc(e.target.value)} multiline rows={4} label="Description"
+            required></TextField>
+            <TextField 
+                id="type" 
+                value={type} 
+                onChange={(e) => setType(e.target.value)} 
+                select 
+                label="Type"
+                required
+            >
+                {types.map((option) => (
+                    <MenuItem key={option.key} value={option.value}>
+                    {option.value}
+                    </MenuItem>
+                ))}
+            </TextField>
+            <DialogActions>
+              <Button type="submit">Add</Button>
+              <Button onClick={handleClose}>Cancel</Button>
+            </DialogActions>
+        </DialogContent>
+      </Dialog>
+    </Fragment>
   );
 };
 
