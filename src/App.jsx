@@ -6,6 +6,7 @@ import Container from "@mui/material/Container";
 import Search from "./Search.jsx";
 import Filters from "./Filters.jsx";
 import AddNote from "./AddNote.jsx";
+import NoteForm from "./NoteForm.jsx";
 import { Grid2 } from "@mui/material";
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
           <AddNote />
         </Grid2>
       </Grid2>
+      <NoteForm />
     </Container>
   );
 };
