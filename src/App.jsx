@@ -9,6 +9,7 @@ import Filters from "./components/Filters.jsx";
 import AddNote from "./components/AddNote.jsx";
 import NoteForm from "./components/NoteForm.jsx";
 import Progress from "./components/Progress.jsx";
+import NoteCard from "./components/Card.jsx";
 import { Grid2 } from "@mui/material";
 const App = () => {
   return (
@@ -24,9 +25,19 @@ const App = () => {
         <Grid2 display="flex" justifyContent="right" size={4}>
           <AddNote />
         </Grid2>
+        <Grid2 size={12}>
+          <h2>No Notes to Display.</h2>
           <img src={noNotes} />
+        </Grid2>  
       </Grid2>
-      <NoteForm />
+      <Grid2 container spacing={2}>
+        <Grid2 size={6}>
+          <NoteCard />
+        </Grid2>
+        <Grid2 size={6}>
+          <NoteCard />
+        </Grid2>
+      </Grid2>
     </Container>
   );
 };
