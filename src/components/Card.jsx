@@ -20,11 +20,13 @@ import {
   Delete,
 } from "@mui/icons-material";
 
-const NoteCard = ({ task }) => {
+const NoteCard = ({ task, onDeleteTask }) => {
   console.log("this is the task in the notecard", task.id);
+  const date = new Date(task.date);
+  const readableDate = date.toLocaleString();
   return (
     <Card key={task.id}>
-      <CardHeader title={task.title} subheader={task.date} />
+      <CardHeader title={task.title} subheader={readableDate} />
       <CardContent>
         <Typography variant="body2" sx={{ color: "text.secondary" }}>
           {task.desc}
@@ -38,7 +40,7 @@ const NoteCard = ({ task }) => {
               <IconButton>
                 <Edit />
               </IconButton>
-              <IconButton>
+              <IconButton onClick={onDeleteTask}>
                 <DeleteForever />
               </IconButton>
             </Box>

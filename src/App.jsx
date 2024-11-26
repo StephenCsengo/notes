@@ -51,17 +51,25 @@ const App = () => {
         <Grid2 display="flex" justifyContent="right" size={4}>
           <AddNote onAddTask={addTask} />
         </Grid2>
-        <Grid2 size={12}>
-          <h2>No Notes to Display</h2>
-          <img src={noNotes} />
-        </Grid2>
-      </Grid2>
-      <Grid2 container spacing={2}>
-        {tasks.map((task) => (
-          <Grid2 size={6}>
-            <NoteCard key={task.id} task={task} />
+
+        {tasks.length > 0 ? (
+          <Grid2 container spacing={2}>
+            {tasks.map((task) => (
+              <Grid2 size={6}>
+                <NoteCard
+                  key={task.id}
+                  task={task}
+                  onDeleteTask={() => deleteTask(task.id)}
+                />
+              </Grid2>
+            ))}
           </Grid2>
-        ))}
+        ) : (
+          <Grid2 size={12}>
+            <h2>No Notes to Display</h2>
+            <img src={noNotes} />
+          </Grid2>
+        )}
       </Grid2>
     </Container>
   );

@@ -8,6 +8,8 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
+  Grid2,
+  Grid,
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 
@@ -64,43 +66,59 @@ const AddNote = ({ onAddTask }) => {
           },
         }}
       >
-        <DialogTitle>Add Note</DialogTitle>
-        <DialogContent>
-          <TextField
-            id="title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            label="Title"
-            required
-          ></TextField>
-          <TextField
-            id="desc"
-            value={desc}
-            onChange={(e) => setDesc(e.target.value)}
-            multiline
-            rows={4}
-            label="Description"
-            required
-          ></TextField>
-          <TextField
-            id="type"
-            value={type}
-            onChange={(e) => setType(e.target.value)}
-            select
-            label="Type"
-            required
-          >
-            {types.map((option) => (
-              <MenuItem key={option.key} value={option.value}>
-                {option.value}
-              </MenuItem>
-            ))}
-          </TextField>
-          <DialogActions>
-            <Button type="submit">Add</Button>
-            <Button onClick={handleClose}>Cancel</Button>
-          </DialogActions>
-        </DialogContent>
+        <Grid2 container spacing={2}>
+          <Grid2 size={12}>
+            <DialogTitle>Add Note</DialogTitle>
+          </Grid2>
+          <Grid2 size={12}>
+            <DialogContent>
+              <Grid2 container spacing={2}>
+                <Grid2 size={8}>
+                  <TextField
+                    id="title"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                    label="Title"
+                    required
+                  ></TextField>
+                </Grid2>
+                <Grid2 size={4}>
+                  <TextField
+                    id="type"
+                    value={type}
+                    onChange={(e) => setType(e.target.value)}
+                    select
+                    label="Type"
+                    required
+                  >
+                    {types.map((option) => (
+                      <MenuItem key={option.key} value={option.value}>
+                        {option.value}
+                      </MenuItem>
+                    ))}
+                  </TextField>
+                </Grid2>
+                <Grid2 size={8}>
+                  <TextField
+                    id="desc"
+                    value={desc}
+                    onChange={(e) => setDesc(e.target.value)}
+                    multiline
+                    rows={4}
+                    label="Description"
+                    required
+                  ></TextField>
+                </Grid2>
+                <Grid2 size={12}>
+                  <DialogActions>
+                    <Button type="submit">Add</Button>
+                    <Button onClick={handleClose}>Cancel</Button>
+                  </DialogActions>
+                </Grid2>
+              </Grid2>
+            </DialogContent>
+          </Grid2>
+        </Grid2>
       </Dialog>
     </Fragment>
   );
