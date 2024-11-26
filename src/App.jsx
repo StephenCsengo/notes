@@ -57,12 +57,11 @@ const App = () => {
         </Grid2>
       </Grid2>
       <Grid2 container spacing={2}>
-        <Grid2 size={6}>
-          <NoteCard />
-        </Grid2>
-        <Grid2 size={6}>
-          <NoteCard />
-        </Grid2>
+        {tasks.map((task) => (
+          <Grid2 size={6}>
+            <NoteCard key={task.id} task={task} />
+          </Grid2>
+        ))}
       </Grid2>
     </Container>
   );

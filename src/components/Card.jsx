@@ -20,13 +20,14 @@ import {
   Delete,
 } from "@mui/icons-material";
 
-const NoteCard = () => {
+const NoteCard = ({ task }) => {
+  console.log("this is the task in the notecard", task.id);
   return (
-    <Card>
-      <CardHeader title="To do note" subheader="Insert date here" />
+    <Card key={task.id}>
+      <CardHeader title={task.title} subheader={task.date} />
       <CardContent>
         <Typography variant="body2" sx={{ color: "text.secondary" }}>
-          To do description
+          {task.desc}
         </Typography>
         <CardActions>
           <Container>
@@ -44,7 +45,7 @@ const NoteCard = () => {
           </Container>
           <Container sx={{ justifyContent: "flex-end" }}>
             <Chip
-              label="Home"
+              label={task.type}
               color="secondary"
               variant="outlined"
               sx={{ float: "right" }}
