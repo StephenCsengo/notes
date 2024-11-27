@@ -43,13 +43,15 @@ const App = () => {
   const handleSearch = (term) => {
     setSearchTerm(term);
   };
-  const filteredTasks = tasks.filter((task) => {
-    const matchesSearch =
-      task.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      task.desc.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesFilter = !activeFilter || task.type === activeFilter;
-    return matchesSearch && matchesFilter;
-  });
+  const filteredTasks = tasks
+    .filter((task) => {
+      const matchesSearch =
+        task.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        task.desc.toLowerCase().includes(searchTerm.toLowerCase());
+      const matchesFilter = !activeFilter || task.type === activeFilter;
+      return matchesSearch && matchesFilter;
+    })
+    .sort((a, b) => a.completed - b.completed);
 
   const handleFilterChange = (filter) => {
     setActiveFilter(filter.label === "All" ? null : filter.label);

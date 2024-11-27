@@ -30,9 +30,10 @@ const NoteCard = ({ task, onDeleteTask, onCompleteTask }) => {
   };
 
   const chipColor = typeToColor[task.type];
+  const cardBackground = task.completed ? "#adadad" : "#fff";
 
   return (
-    <Card key={task.id}>
+    <Card key={task.id} sx={{ backgroundColor: cardBackground }}>
       <CardHeader
         title={task.title}
         subheader={readableDate}
