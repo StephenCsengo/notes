@@ -60,6 +60,7 @@ const AddNote = ({ onAddTask }) => {
               title: title,
               type: type,
               desc: desc,
+              completed: false,
             };
             onAddTask(newTask);
             handleClose();

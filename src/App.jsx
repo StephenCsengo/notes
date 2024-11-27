@@ -60,6 +60,7 @@ const App = () => {
                   key={task.id}
                   task={task}
                   onDeleteTask={() => deleteTask(task.id)}
+                  onCompleteTask={() => completeTask(task.id)}
                 />
               </Grid2>
             ))}
