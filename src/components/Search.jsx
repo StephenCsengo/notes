@@ -2,7 +2,7 @@ import React from "react";
 import { TextField, Box, InputAdornment } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 
-const Search = () => {
+const Search = ({ searchTerm, onSearch }) => {
   return (
     <Box sx={{ display: "flex", alignItems: "flex-end", width: "100%" }}>
       <TextField
@@ -10,6 +10,7 @@ const Search = () => {
         id="search"
         label="Search notes..."
         variant="outlined"
+        onChange={(e) => onSearch(e.target.value)}
         slotProps={{
           input: {
             startAdornment: (

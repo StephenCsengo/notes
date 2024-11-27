@@ -30,6 +30,7 @@ const NoteCard = ({ task, onDeleteTask, onCompleteTask }) => {
   };
 
   const chipColor = typeToColor[task.type];
+
   return (
     <Card key={task.id}>
       <CardHeader

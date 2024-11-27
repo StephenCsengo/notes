@@ -18,6 +18,8 @@ const App = () => {
     return savedTasks ? JSON.parse(savedTasks) : [];
   });
   const [activeFilter, setActiveFilter] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
+
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
@@ -38,9 +40,16 @@ const App = () => {
     setTasks(tasks.filter((task) => task.id !== taskId));
   };
 
-  const filteredTasks = tasks.filter(
-    (task) => !activeFilter || task.type === activeFilter
-  );
+  const handleSearch = (term) => {
+    setSearchTerm(term);
+  };
+  const filteredTasks = tasks.filter((task) => {
+    const matchesSearch =
+      task.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      task.desc.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesFilter = !activeFilter || task.type === activeFilter;
+    return matchesSearch && matchesFilter;
+  });
 
   const handleFilterChange = (filter) => {
     setActiveFilter(filter.label === "All" ? null : filter.label);
@@ -51,7 +60,7 @@ const App = () => {
     <Container maxWidth="xl">
       <Grid container spacing={2}>
         <Grid size={12}>
-          <Search />
+          <Search searchTerm={searchTerm} onSearch={handleSearch} />
         </Grid>
         <Grid display="flex" justifyContent="left" size={8}>
           <Filters

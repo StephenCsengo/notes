@@ -42,7 +42,6 @@ const Filters = ({ activeFilter, onFilterChange }) => {
       ))}
     </Stack>
   );
-  console.log(filters[0].color);
 };
 
 export default Filters;
