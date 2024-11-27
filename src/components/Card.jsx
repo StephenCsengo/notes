@@ -21,9 +21,15 @@ import {
 } from "@mui/icons-material";
 
 const NoteCard = ({ task, onDeleteTask, onCompleteTask }) => {
-  console.log("this is the task in the notecard", task.id);
   const date = new Date(task.date);
   const readableDate = date.toLocaleString();
+  const typeToColor = {
+    Home: "secondary",
+    Work: "success",
+    Personal: "info",
+  };
+
+  const chipColor = typeToColor[task.type];
   return (
     <Card key={task.id}>
       <CardHeader
@@ -42,28 +48,25 @@ const NoteCard = ({ task, onDeleteTask, onCompleteTask }) => {
         >
           {task.desc}
         </Typography>
-        <CardActions>
-          <Container>
-            <Box sx={{ float: "left" }}>
-              <IconButton onClick={onCompleteTask}>
-                <CheckCircleOutline color="green" />
-              </IconButton>
-              <IconButton>
-                <Edit />
-              </IconButton>
-              <IconButton onClick={onDeleteTask}>
-                <DeleteForever />
-              </IconButton>
-            </Box>
-          </Container>
-          <Container sx={{ justifyContent: "flex-end" }}>
-            <Chip
-              label={task.type}
-              color="secondary"
-              variant="outlined"
-              sx={{ float: "right" }}
-            />
-          </Container>
+        <CardActions
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <Box>
+            <IconButton onClick={onCompleteTask}>
+              <CheckCircleOutline color="success" />
+            </IconButton>
+            <IconButton>
+              <Edit />
+            </IconButton>
+            <IconButton onClick={onDeleteTask}>
+              <DeleteForever />
+            </IconButton>
+          </Box>
+          <Chip label={task.type} color={chipColor} variant="" />
         </CardActions>
       </CardContent>
     </Card>

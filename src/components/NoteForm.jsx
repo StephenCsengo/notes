@@ -23,14 +23,6 @@ const NoteForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(title, desc, type);
-    const newTask = {
-      id: Date.now(),
-      date: Date.now(),
-      title: { title },
-      type: { type },
-      desc: { desc },
-      completed: false,
-    };
   };
 
   return (

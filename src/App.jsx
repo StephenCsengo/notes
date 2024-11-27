@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { act, useEffect, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import noNotes from "./assets/notNotes.svg";
@@ -10,14 +10,14 @@ import AddNote from "./components/AddNote.jsx";
 import NoteForm from "./components/NoteForm.jsx";
 import Progress from "./components/Progress.jsx";
 import NoteCard from "./components/Card.jsx";
-import { Grid2 } from "@mui/material";
+import Grid from "@mui/material/Grid2";
 
 const App = () => {
   const [tasks, setTasks] = useState(() => {
     const savedTasks = localStorage.getItem("tasks");
     return savedTasks ? JSON.parse(savedTasks) : [];
   });
-
+  const [activeFilter, setActiveFilter] = useState(null);
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
@@ -37,41 +37,52 @@ const App = () => {
   const deleteTask = (taskId) => {
     setTasks(tasks.filter((task) => task.id !== taskId));
   };
-  console.log(tasks);
+
+  const filteredTasks = tasks.filter(
+    (task) => !activeFilter || task.type === activeFilter
+  );
+
+  const handleFilterChange = (filter) => {
+    setActiveFilter(filter.label === "All" ? null : filter.label);
+    console.log("this is the filter: ", filter.label);
+  };
+
   return (
     <Container maxWidth="xl">
-      <Grid2 container spacing={2}>
-        <Grid2 size={12}>
+      <Grid container spacing={2}>
+        <Grid size={12}>
           <Search />
-        </Grid2>
-        <Grid2 display="flex" justifyContent="left" size={8}>
-          <Filters />
+        </Grid>
+        <Grid display="flex" justifyContent="left" size={8}>
+          <Filters
+            activeFilter={activeFilter}
+            onFilterChange={handleFilterChange}
+          />
           <Progress />
-        </Grid2>
-        <Grid2 display="flex" justifyContent="right" size={4}>
+        </Grid>
+        <Grid display="flex" justifyContent="right" size={4}>
           <AddNote onAddTask={addTask} />
-        </Grid2>
+        </Grid>
 
-        {tasks.length > 0 ? (
-          <Grid2 container spacing={2}>
-            {tasks.map((task) => (
-              <Grid2 size={6}>
+        {filteredTasks.length > 0 ? (
+          <Grid container spacing={4}>
+            {filteredTasks.map((task) => (
+              <Grid item size={{ xs: 12, sm: 6 }} key={task.id}>
                 <NoteCard
-                  key={task.id}
                   task={task}
                   onDeleteTask={() => deleteTask(task.id)}
                   onCompleteTask={() => completeTask(task.id)}
                 />
-              </Grid2>
+              </Grid>
             ))}
-          </Grid2>
+          </Grid>
         ) : (
-          <Grid2 size={12}>
+          <Grid size={12}>
             <h2>No Notes to Display</h2>
             <img src={noNotes} />
-          </Grid2>
+          </Grid>
         )}
-      </Grid2>
+      </Grid>
     </Container>
   );
 };

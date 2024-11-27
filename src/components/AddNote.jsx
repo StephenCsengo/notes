@@ -63,6 +63,7 @@ const AddNote = ({ onAddTask }) => {
               completed: false,
             };
             onAddTask(newTask);
+            console.log(newTask);
             handleClose();
           },
         }}
