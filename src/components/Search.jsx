@@ -8,7 +8,7 @@ const Search = ({ searchTerm, onSearch }) => {
       <TextField
         fullWidth
         id="search"
-        label="Search notes..."
+        label="Search Tasks..."
         variant="outlined"
         onChange={(e) => onSearch(e.target.value)}
         slotProps={{

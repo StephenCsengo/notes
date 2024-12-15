@@ -44,7 +44,7 @@ const AddNote = ({ onAddTask }) => {
     <Fragment>
       <Button variant="contained" onClick={handleOpen}>
         <AddIcon />
-        Add Note
+        Add Task
       </Button>
       <Dialog
         open={open}
@@ -70,7 +70,7 @@ const AddNote = ({ onAddTask }) => {
       >
         <Grid2 container spacing={2}>
           <Grid2 size={12}>
-            <DialogTitle>Add Note</DialogTitle>
+            <DialogTitle>Add Task</DialogTitle>
           </Grid2>
           <Grid2 size={12}>
             <DialogContent>
