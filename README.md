@@ -11,6 +11,12 @@ The user of TaskMaster can add tasks, delete tasks, and mark tasks as complete. 
 4. Install the necessary packages with `npm install`
 5. Start the application with `npm run dev`, open the localhost version in a browser
 
+## Functionality
+
+### Default View
+
+![Default view of TaskMaster](./readme-screenshots/no-tasks.png)
+
 ## Roadmap
 
 - [ ] Add functionality for the user to edit tasks.
