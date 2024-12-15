@@ -17,6 +17,26 @@ The user of TaskMaster can add tasks, delete tasks, and mark tasks as complete. 
 
 ![Default view of TaskMaster](./readme-screenshots/no-tasks.png)
 
+### Add Task View
+
+![TaskMaster's add task form](./readme-screenshots/add-task.png)
+
+### Default View with Tasks
+
+![Default view of TaskMaster with tasks added](./readme-screenshots/with-tasks.png)
+
+### Filtered Task View
+
+![Default view of TaskMaster with filter applied](./readme-screenshots/filtered-view.png)
+
+### Search Results View
+
+![Search result view of TaskMaster](./readme-screenshots/search-tasks.png)
+
+### Default View with Completed Task
+
+![Default view of TaskMaster with a completed task](./readme-screenshots/completed-tasks.png)
+
 ## Roadmap
 
 - [ ] Add functionality for the user to edit tasks.
