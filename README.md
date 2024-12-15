@@ -42,3 +42,7 @@ The user of TaskMaster can add tasks, delete tasks, and mark tasks as complete. 
 - [ ] Add functionality for the user to edit tasks.
 - [ ] Adjust Add Task form layout
 - [ ] Add CSS animations to smooth out functionality such as marking a task complete.
+
+## Contributions
+
+Contributions are welcome! Please fork the repository and create a new branch for your features or bug fixes. Submit a pull request describing your changes.
