@@ -59,8 +59,19 @@ const App = () => {
   };
 
   return (
-    <Container maxWidth="xl">
-      <Grid container spacing={2}>
+    <Container
+      maxWidth="md"
+      sx={{
+        minWidth: "900px",
+      }}
+      alignItems="flex-start"
+    >
+      <Grid
+        container
+        spacing={2}
+        columns={{ xs: 12 }}
+        sx={{ marginBottom: "20px" }}
+      >
         <Grid size={12}>
           <Search searchTerm={searchTerm} onSearch={handleSearch} />
         </Grid>
@@ -74,26 +85,25 @@ const App = () => {
         <Grid display="flex" justifyContent="right" size={4}>
           <AddNote onAddTask={addTask} />
         </Grid>
-
-        {filteredTasks.length > 0 ? (
-          <Grid container spacing={4}>
-            {filteredTasks.map((task) => (
-              <Grid item size={{ xs: 12, sm: 6 }} key={task.id}>
-                <NoteCard
-                  task={task}
-                  onDeleteTask={() => deleteTask(task.id)}
-                  onCompleteTask={() => completeTask(task.id)}
-                />
-              </Grid>
-            ))}
-          </Grid>
-        ) : (
-          <Grid size={12}>
-            <h2>No Notes to Display</h2>
-            <img src={noNotes} />
-          </Grid>
-        )}
       </Grid>
+      {filteredTasks.length > 0 ? (
+        <Grid container spacing={2} flex="1" sx={{ minWidth: "100%" }}>
+          {filteredTasks.map((task) => (
+            <Grid item size={{ xs: 12, sm: 6 }} key={task.id}>
+              <NoteCard
+                task={task}
+                onDeleteTask={() => deleteTask(task.id)}
+                onCompleteTask={() => completeTask(task.id)}
+              />
+            </Grid>
+          ))}
+        </Grid>
+      ) : (
+        <Grid size={12}>
+          <h2>No Notes to Display</h2>
+          <img src={noNotes} />
+        </Grid>
+      )}
     </Container>
   );
 };
